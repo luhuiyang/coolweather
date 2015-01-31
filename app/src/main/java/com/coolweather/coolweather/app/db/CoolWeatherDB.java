@@ -96,7 +96,7 @@ public class CoolWeatherDB {
      * 从数据库读取某省下所有的城市信息
      */
 
-    public List<City> loadCity() {
+    public List<City> loadCity(int provinceId) {
         List<City> list = new ArrayList<City>();
         Cursor cursor = db.query("City", null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
@@ -115,7 +115,7 @@ public class CoolWeatherDB {
     /**
      * 将Country实例存储到数据库
      */
-    public void savaCountry(Country country) {
+    public void saveCountry(Country country) {
         if (country != null) {
             ContentValues values = new ContentValues();
             values.put("country_name", country.getCountryName());
@@ -128,7 +128,7 @@ public class CoolWeatherDB {
     /**
      * 从数据库下读取某城市下所有的县信息
      */
-    public List<Country> loadCountry() {
+    public List<Country> loadCountry(int cityId) {
         List<Country> list = new ArrayList<Country>();
         Cursor cursor = db.query("Country", null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
@@ -141,5 +141,6 @@ public class CoolWeatherDB {
         }
         return list;
     }
+
 
 }
